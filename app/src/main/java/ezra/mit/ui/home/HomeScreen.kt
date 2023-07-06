@@ -45,14 +45,13 @@ import ezra.mit.ui.theme.spacing
 @Composable
 fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
     val spacing = MaterialTheme.spacing
-
-
     Box(modifier = Modifier)
 
     {
 
-        Image(painter = painterResource(id = R.drawable.saff),
-            contentDescription ="savv",
+        Image(
+            painter = painterResource(id = R.drawable.saff),
+            contentDescription = "savv",
             contentScale = ContentScale.FillBounds,
             modifier = Modifier
                 .fillMaxSize()
@@ -61,308 +60,307 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
         )
 
     }
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
 
-
-
-
-
-
-
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-            .padding(spacing.medium)
-            .padding(top = spacing.extraLarge),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-
-        Text(
-            "Discover the world  with us!",
-            style = MaterialTheme.typography.headlineSmall,
-            color = Color.Black
-        )
-
-
-
-
-        Spacer(modifier = Modifier.height(20.dp))
-
-
-
-        Spacer(modifier =Modifier.height(20.dp))
-
-
-        Row(modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.Top,
-            horizontalArrangement  =  Arrangement.SpaceEvenly) {
-
-            Column() {
-                Image(painter = painterResource(id = R.drawable.aero),
-                    contentDescription ="sign",
-                    contentScale = ContentScale.FillBounds,
-                    modifier = Modifier
-                        .size(50.dp)
-//                    .clip(RectangleShape) // clip to the circle shape
-                        .border(2.dp, Color.Black, RoundedCornerShape(10.dp))//optional
-                )
-
-                Spacer(modifier =Modifier.height(10.dp))
-                Text(
-                    modifier = Modifier
-                        .clickable {
-                            navController.navigate(ROUTE_BOOKNOW) {
-                                popUpTo(ROUTE_HOME) { inclusive = true }
-                            }
-                        },
-                    text = "Flights",
-                    style = MaterialTheme.typography.bodyLarge,
-                    textAlign = TextAlign.Center,
-                    color = Color.Black,
-                    fontSize = 20.sp
-                )
-            }
-
-
-
-            Column {
-
-                Image(painter = painterResource(id = R.drawable.hotel),
-                contentDescription ="hot",
-                contentScale = ContentScale.FillBounds,
-                modifier = Modifier
-                    .size(50.dp)
-                    .border(2.dp, Color.Black, RoundedCornerShape(10.dp))//optional
-            )
-                Spacer(modifier = Modifier.height(10.dp))
-
-                Text(
-                    modifier = Modifier
-                        .clickable {
-                            navController.navigate(ROUTE_HOTELS) {
-                                popUpTo(ROUTE_HOME) { inclusive = true }
-                            }
-                        },
-                    text = "Hotels",
-                    style = MaterialTheme.typography.bodyLarge,
-                    textAlign = TextAlign.Center,
-                    color = Color.Black,
-                    fontSize = 20.sp
-                )
-
-                
-            }
-
-            Column() {
-                Image(painter = painterResource(id = R.drawable.payy),
-                    contentDescription ="hot",
-                    contentScale = ContentScale.FillBounds,
-                    modifier = Modifier
-                        .size(50.dp)
-                        .border(2.dp, Color.Black, RoundedCornerShape(10.dp))//optional
-                )
-
-                Spacer(modifier = Modifier.height(10.dp))
-
-                Text(
-                    modifier = Modifier
-                        .clickable {
-                            navController.navigate(ROUTE_PAYMENT) {
-                                popUpTo(ROUTE_HOME) { inclusive = true }
-                            }
-                        },
-                    text = "Payment",
-                    style = MaterialTheme.typography.bodyLarge,
-                    textAlign = TextAlign.Center,
-                    color = Color.Black,
-                    fontSize = 20.sp
-                )
-            }
-
-
-
-
-
-        }
-     Spacer(modifier = Modifier.height(20.dp))
-
-
+item {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentHeight()
                 .padding(spacing.medium)
-
-
-
-
+                .padding(top = spacing.extraLarge),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
+            Text(
+                "Discover the world  with us!",
+                style = MaterialTheme.typography.headlineSmall,
+                color = Color.Black
+            )
 
-            Spacer(modifier = Modifier.height(30.dp))
+
+
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+
+
+            Spacer(modifier = Modifier.height(20.dp))
+
 
             Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.Top,
+                horizontalArrangement = Arrangement.SpaceEvenly
             ) {
 
-                Text(text ="Popular Destinations",color = Color.Black, fontSize = 40.sp, fontFamily =FontFamily.Cursive)
+                Column() {
+                    Image(
+                        painter = painterResource(id = R.drawable.aero),
+                        contentDescription = "sign",
+                        contentScale = ContentScale.FillBounds,
+                        modifier = Modifier
+                            .size(50.dp)
+//                    .clip(RectangleShape) // clip to the circle shape
+                            .border(2.dp, Color.Black, RoundedCornerShape(10.dp))//optional
+                    )
 
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Text(
+                        modifier = Modifier
+                            .background(color = Color.DarkGray)
+                            .border(1.dp, Color.Black)
+                            .clickable {
+                                navController.navigate(ROUTE_BOOKNOW) {
+                                    popUpTo(ROUTE_HOME) { inclusive = true }
+                                }
+                            },
+                        text = "Flights",
+                        style = MaterialTheme.typography.bodyLarge,
+                        textAlign = TextAlign.Center,
+                        color = Color.White,
+                        fontSize = 20.sp
+                    )
+                }
+
+
+
+                Column {
+
+                    Image(
+                        painter = painterResource(id = R.drawable.hotel),
+                        contentDescription = "hot",
+                        contentScale = ContentScale.FillBounds,
+                        modifier = Modifier
+                            .size(50.dp)
+                            .border(2.dp, Color.Black, RoundedCornerShape(10.dp))//optional
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    Text(
+                        modifier = Modifier
+                            .background(color = Color.DarkGray)
+                            .border(1.dp, Color.Black)
+                            .clickable {
+                                navController.navigate(ROUTE_HOTELS) {
+                                    popUpTo(ROUTE_HOME) { inclusive = true }
+                                }
+                            },
+                        text = "Hotels",
+                        style = MaterialTheme.typography.bodyLarge,
+                        textAlign = TextAlign.Center,
+                        color = Color.White,
+                        fontSize = 20.sp
+                    )
+
+
+                }
+
+                Column() {
+                    Image(
+                        painter = painterResource(id = R.drawable.payy),
+                        contentDescription = "hot",
+                        contentScale = ContentScale.FillBounds,
+                        modifier = Modifier
+                            .size(50.dp)
+                            .border(2.dp, Color.Black, RoundedCornerShape(10.dp))//optional
+                    )
+
+                    Spacer(modifier = Modifier.height(10.dp))
+
+                    Text(
+                        modifier = Modifier
+                            .background(color = Color.DarkGray)
+                            .border(1.dp, Color.Black)
+                            .clickable {
+                                navController.navigate(ROUTE_PAYMENT) {
+                                    popUpTo(ROUTE_HOME) { inclusive = true }
+                                }
+                            },
+                        text = "Payment",
+                        style = MaterialTheme.typography.bodyLarge,
+                        textAlign = TextAlign.Center,
+                        color = Color.White,
+                        fontSize = 20.sp
+                    )
+                }
 
 
             }
+            Spacer(modifier = Modifier.height(20.dp))
 
-            LazyColumn(
-                modifier = Modifier.fillMaxWidth()
+
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight()
+                    .padding(spacing.medium)
+
+
             ) {
 
 
-                item {
-                    Column(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .wrapContentHeight()
-                            .padding(vertical = 25.dp),
-                        verticalArrangement  = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
+                Spacer(modifier = Modifier.height(30.dp))
 
+                Row(
+                ) {
 
-                       Card(
-                           modifier = Modifier
-                               .padding(10.dp)
-                               .fillMaxWidth(),
-
-                           elevation = CardDefaults.cardElevation(8.dp)
-
-                       ) {
-//
-
-
-
-
-                           Text(text ="Malibu", fontSize = 20.sp, fontFamily = FontFamily.SansSerif)
-
-                           Column() {
-                               Image(
-                                   painter = painterResource(id = R.drawable.mali),
-                                   contentDescription = "telav",
-                                   contentScale = ContentScale.FillBounds,
-                                   modifier = Modifier
-                                       .fillMaxWidth()
-                               )
-                               Spacer(modifier = Modifier.height(20.dp))
-                               
-
-                               Spacer(modifier = Modifier.width(10.dp))
-
-
-
-
-                           }
-
-
-
-                       }
-
-
-
-                    }
-
-
-
+                    Text(
+                        text = "Popular Destinations",
+                        color = Color.Black,
+                        fontSize = 40.sp,
+                        fontFamily = FontFamily.Cursive
+                    )
 
 
                 }
 
+                Column(
+                    modifier = Modifier.fillMaxWidth()
+                ) {
 
 
-
-                item {
-
-
-                       Card(
-                           modifier = Modifier
-                               .padding(10.dp)
-                               .fillMaxWidth(),
-                           shape = RoundedCornerShape(10.dp),
-                           elevation = CardDefaults.cardElevation(8.dp),
-
-
-                       ) {
-
-
-                           Text(text ="Tokyo", fontSize = 20.sp)
-
-                           Column(
-                               horizontalAlignment = Alignment.CenterHorizontally,
-                           ) {
-
-
-                               Image(
-                                   painter = painterResource(id = R.drawable.japp),
-                                   contentDescription = "telav",
-                                   contentScale = ContentScale.FillBounds,
-                                   modifier = Modifier
-                                       .fillMaxWidth()
-
-
-                               )
-                               Spacer(modifier = Modifier.width(5.dp))
-
-                               Column() {
-
-
-
-
-                               }
-
-                           }
-
-
-                       }
-
-
-
-                }
-
-
-                item{
-
-
-                    Card(
-                        modifier = Modifier
-                            .padding(10.dp)
-                            .fillMaxWidth(),
-                        shape = RoundedCornerShape(10.dp),
-                        elevation = CardDefaults.cardElevation(8.dp),
-
-
-                        ) {
-//
-
-                        Text(text ="Tokyo", fontSize = 20.sp)
 
                         Column(
-                            horizontalAlignment = Alignment.CenterHorizontally,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .wrapContentHeight()
+                                .padding(vertical = 25.dp),
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally
                         ) {
 
 
-                            Image(
-                                painter = painterResource(id = R.drawable.egypt),
-                                contentDescription = "egypt",
-                                contentScale = ContentScale.FillBounds,
+                            Card(
                                 modifier = Modifier
-                                    .fillMaxWidth()
+                                    .padding(10.dp)
+                                    .fillMaxWidth(),
+
+                                elevation = CardDefaults.cardElevation(8.dp)
+
+                            ) {
+//
 
 
-                            )
-                            Spacer(modifier = Modifier.width(5.dp))
+                                Text(
+                                    text = "Malibu",
+                                    fontSize = 20.sp,
+                                    fontFamily = FontFamily.SansSerif
+                                )
 
-                            Column() {
+                                Column() {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.mali),
+                                        contentDescription = "telav",
+                                        contentScale = ContentScale.FillBounds,
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                    )
+                                    Spacer(modifier = Modifier.height(20.dp))
 
 
+                                    Spacer(modifier = Modifier.width(10.dp))
+
+
+                                }
 
 
                             }
+
+
+                        }
+
+
+
+
+
+
+
+
+
+
+                        Card(
+                            modifier = Modifier
+                                .padding(10.dp)
+                                .fillMaxWidth(),
+                            shape = RoundedCornerShape(10.dp),
+                            elevation = CardDefaults.cardElevation(8.dp),
+
+
+                            ) {
+
+
+                            Text(text = "Tokyo", fontSize = 20.sp)
+
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                            ) {
+
+
+                                Image(
+                                    painter = painterResource(id = R.drawable.tokk),
+                                    contentDescription = "telav",
+                                    contentScale = ContentScale.FillBounds,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+
+
+                                )
+                                Spacer(modifier = Modifier.width(5.dp))
+
+                                Column() {
+
+
+                                }
+
+                            }
+
+
+                        }
+
+
+
+
+
+
+
+
+                        Card(
+                            modifier = Modifier
+                                .padding(10.dp)
+                                .fillMaxWidth(),
+                            shape = RoundedCornerShape(10.dp),
+                            elevation = CardDefaults.cardElevation(8.dp),
+
+
+                            ) {
+//
+
+                            Text(text = "Egypt", fontSize = 20.sp)
+
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                            ) {
+
+
+                                Image(
+                                    painter = painterResource(id = R.drawable.egypt),
+                                    contentDescription = "egypt",
+                                    contentScale = ContentScale.FillBounds,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+
+
+                                )
+                                Spacer(modifier = Modifier.width(5.dp))
+
+                                Column() {
+
+
+                                }
+
+                            }
+
 
                         }
 
@@ -371,58 +369,33 @@ fun HomeScreen(viewModel: AuthViewModel?, navController: NavHostController) {
 
 
 
+
+
+
+
+
+                Button(
+                    onClick = {
+                        viewModel?.logout()
+                        navController.navigate(ROUTE_LOGIN) {
+                            popUpTo(ROUTE_HOME) { inclusive = true }
+                        }
+                    },
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .padding(top = spacing.extraLarge)
+                ) {
+                    Text(text = "Logout")
                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            }
-
-
-
-
-
-            Button(
-                onClick = {
-                    viewModel?.logout()
-                    navController.navigate(ROUTE_LOGIN) {
-                        popUpTo(ROUTE_HOME) { inclusive = true }
-                    }
-                },
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .padding(top = spacing.extraLarge)
-            ) {
-                Text(text = "Logout")
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-            }
-
         }
+
+    }
+}
+
+
 
 
 

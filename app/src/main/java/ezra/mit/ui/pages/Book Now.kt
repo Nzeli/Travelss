@@ -1,23 +1,16 @@
 package ezra.mit.ui.pages
 
 import android.content.res.Configuration
-import android.widget.Toast
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -25,42 +18,30 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.modifier.modifierLocalConsumer
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardCapitalization
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.constraintlayout.compose.Dimension
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import ezra.mit.R
-import ezra.mit.navigation.ROUTE_BOOKNOW
 import ezra.mit.navigation.ROUTE_HOME
-import ezra.mit.navigation.ROUTE_LOGIN
 import ezra.mit.navigation.ROUTE_PAYMENT
 import ezra.mit.ui.auth.AuthViewModel
-import ezra.mit.ui.theme.AppTheme
 import ezra.mit.ui.theme.spacing
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BookNow(viewModel: AuthViewModel?, navController: NavHostController) {
     val spacing = MaterialTheme.spacing
+    var text1 by remember { mutableStateOf(TextFieldValue("")) }
+    var text2 by remember { mutableStateOf(TextFieldValue("")) }
+    var text3 by remember { mutableStateOf(TextFieldValue("")) }
+    var text4 by remember { mutableStateOf(TextFieldValue("")) }
     var text by remember { mutableStateOf(TextFieldValue("")) }
 
 
@@ -82,8 +63,103 @@ fun BookNow(viewModel: AuthViewModel?, navController: NavHostController) {
               .fillMaxSize()
 
       ) {item {
-          Text(text ="Book your", fontSize = 40.sp)
-          Text(text ="Flight", fontSize = 40.sp)
+          Text(text ="Book your", fontSize = 60.sp,fontFamily = FontFamily.Cursive)
+          Text(text ="Flight", fontSize = 60.sp, fontFamily = FontFamily.Cursive)
+
+          Spacer(modifier =Modifier.height(60.dp))
+
+          LazyRow(
+              modifier = Modifier
+                  .fillMaxWidth()
+          ) {
+              item {
+                  Card( modifier = Modifier
+                      .padding(10.dp)
+                      .fillMaxWidth(),
+
+                      elevation = CardDefaults.cardElevation(8.dp)
+                  ) {
+
+                      Text(
+                          text = "First Class",
+                          fontSize = 25.sp,
+                          fontFamily = FontFamily.SansSerif
+                      )
+
+
+                      Column() {
+                          Image(painter = painterResource(id =R.drawable.one),
+                              contentDescription ="first"
+                          )
+                          Text(text ="Starting from", fontSize = 20.sp)
+                          Text(text ="kes 200,000 per person",fontSize = 20.sp)
+                          
+                      }
+
+
+                  }
+              }
+
+              item {
+
+
+                  Card(
+                      modifier = Modifier
+                          .padding(10.dp)
+                          .fillMaxWidth(),
+
+                      elevation = CardDefaults.cardElevation(8.dp)
+                  ) {
+
+                      Text(
+                          text = "Economy Class",
+                          fontSize = 25.sp,
+                          fontFamily = FontFamily.SansSerif
+                      )
+                      Column( ) {
+                          Image(painter = painterResource(id =R.drawable.five),
+                              contentDescription ="second",
+
+                          )
+                          Text(text ="Starting from", fontSize = 20.sp)
+                          Text(text ="kes 50,000 per person",fontSize = 20.sp)
+
+                      }
+
+                  }
+
+              }
+              item {
+
+                  Card(
+                      modifier = Modifier
+                          .padding(10.dp)
+                          .fillMaxWidth(),
+
+                      elevation = CardDefaults.cardElevation(8.dp)
+                  ) {
+                      Text(
+                          text = "Business Class",
+                          fontSize = 25.sp,
+                          fontFamily = FontFamily.SansSerif
+                      )
+                      Column( ) {
+                          Image(painter = painterResource(id =R.drawable.bzn),
+                              contentDescription ="second",
+
+                          )
+                          Text(text ="Starting from", fontSize = 20.sp)
+                          Text(text ="kes80,000 per person",fontSize = 20.sp)
+
+
+                      }
+
+                  }
+
+
+
+              }
+          }
 
 
           Spacer(modifier = Modifier.height(40.dp))
@@ -106,9 +182,9 @@ fun BookNow(viewModel: AuthViewModel?, navController: NavHostController) {
 
 
           TextField(
-              value = text,
+              value = text1,
               onValueChange = {
-                  text = it
+                  text1 = it
               },
               label = { Text(text = "TO:", fontSize = 20.sp)},
 
@@ -116,9 +192,9 @@ fun BookNow(viewModel: AuthViewModel?, navController: NavHostController) {
           Spacer(modifier =Modifier.height(40.dp))
 
           TextField(
-              value = text,
+              value = text2,
               onValueChange = {
-                  text = it
+                  text2 = it
               },
               label = { Text(text = "NO.OF DAYS:", fontSize = 20.sp) },
 
@@ -126,18 +202,18 @@ fun BookNow(viewModel: AuthViewModel?, navController: NavHostController) {
           Spacer(modifier =Modifier.height(40.dp))
 
           TextField(
-              value = text,
+              value = text3,
               onValueChange = {
-                  text = it
+                  text3 = it
               },
               label = { Text(text = " FLIGHT CLASS:", fontSize = 20.sp) },
 
           )
           Spacer(modifier =Modifier.height(40.dp))
           TextField(
-              value = text,
+              value = text4,
               onValueChange = {
-                  text = it
+                  text4 = it
               },
               label = { Text(text = "PASSENGERS:", fontSize = 20.sp) },
 
